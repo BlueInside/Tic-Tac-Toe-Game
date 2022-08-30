@@ -1,0 +1,235 @@
+Console.WriteLine("TIC TAC TOE GAME!");
+Player playerX = new Player();
+TicTacToe game = new TicTacToe(playerX);
+
+while (!game.GameOver)
+{
+    
+    game.MarkBoard();
+    game.Board.DrawBoard();
+    playerX.Count++;
+    game.CheckGameStatus();
+
+}
+
+
+
+
+public class Player
+{
+    public int UserPick { get; set; }
+    public char UserChar { get; set; }
+    public int Count { get; set; } = 0;
+
+    public Player()
+    {
+        
+    }
+
+    public int PickSquare()
+    {
+        if (Count % 2 == 0)
+            UserChar = 'X';
+        else UserChar = '0';
+       Console.WriteLine($"It's {UserChar} Turn");
+       return UserPick = Convert.ToInt32(Console.ReadLine());
+       
+    }
+}
+
+
+
+
+public class TicTacToe
+{   
+    public Player Player { get; set; }
+    public Board Board;
+    public bool GameOver;
+
+        public TicTacToe(Player player)
+        {
+        Player = player;
+        Board = new Board();
+        }
+    public void MarkBoard()
+    {
+        
+        Player.PickSquare();
+        if (Player.UserPick == 1 && Board.one == ' ') Board.one = Player.UserChar;
+        else if (Player.UserPick == 1 && Board.one != ' ')
+        {
+            Console.WriteLine("Sorry this square is already marked choose different one!");
+            Player.Count--;
+        }
+
+        if (Player.UserPick == 2 && Board.two == ' ') Board.two = Player.UserChar;
+        else if (Player.UserPick == 2 && Board.two != ' ')
+        {
+            Console.WriteLine("Sorry this square is already marked choose different one!");
+            Player.Count--;
+        }
+
+        if (Player.UserPick == 3 && Board.three == ' ') Board.three = Player.UserChar;
+        else if (Player.UserPick == 3 && Board.three != ' ')
+        {
+            Console.WriteLine("Sorry this square is already marked choose different one!");
+            Player.Count--;
+        }
+
+        if (Player.UserPick == 4 && Board.four == ' ') Board.four = Player.UserChar;
+        else if (Player.UserPick == 4 && Board.four != ' ')
+        {
+            Console.WriteLine("Sorry this square is already marked choose different one!");
+            Player.Count--;
+        }
+
+        if (Player.UserPick == 5 && Board.five == ' ') Board.five = Player.UserChar;
+        else if (Player.UserPick == 5 && Board.five != ' ')
+        {
+            Console.WriteLine("Sorry this square is already marked choose different one!");
+            Player.Count--;
+        }
+
+        if (Player.UserPick == 6 && Board.six == ' ') Board.six = Player.UserChar;
+        else if (Player.UserPick == 6 && Board.six != ' ')
+        {
+            Console.WriteLine("Sorry this square is already marked choose different one!");
+            Player.Count--;
+        }
+
+        if (Player.UserPick == 7 && Board.seven == ' ') Board.seven = Player.UserChar;
+        else if (Player.UserPick == 7 && Board.seven != ' ')
+        {
+            Console.WriteLine("Sorry this square is already marked choose different one!");
+            Player.Count--;
+        }
+
+        if (Player.UserPick == 8 && Board.eight == ' ') Board.eight = Player.UserChar;
+        else if (Player.UserPick == 8 && Board.eight != ' ')
+        {
+            Console.WriteLine("Sorry this square is already marked choose different one!");
+            Player.Count--;
+        }
+
+        if (Player.UserPick == 9 && Board.nine == ' ') Board.nine = Player.UserChar;
+        else if (Player.UserPick == 9 && Board.nine != ' ')
+        {
+            Console.WriteLine("Sorry this square is already marked choose different one!");
+            Player.Count--;
+        }
+
+       
+
+    }
+
+    public void CheckGameStatus()
+    {
+        if (Board.one == Board.four && Board.four == Board.seven && Board.one != ' ')
+        {
+            Console.Clear();
+            Board.DrawBoard();
+            Console.WriteLine($"{Player.UserChar} WON!");
+            GameOver = true; 
+        }
+        if (Board.one == Board.two && Board.three == Board.two && Board.one != ' ')
+        {
+            Console.Clear();
+            Board.DrawBoard();
+            Console.WriteLine($"{Player.UserChar} WON!");
+            GameOver = true;
+        }
+        if (Board.three == Board.six && Board.nine == Board.three && Board.three != ' ' && Board.six != ' ' && Board.nine != ' ')
+        {
+            Console.Clear();
+            Board.DrawBoard();
+            Console.WriteLine($"{Player.UserChar} WON!");
+            GameOver = true;
+        }
+        if (Board.nine == Board.eight && Board.eight == Board.seven && Board.nine != ' ')
+        {
+            Console.Clear();
+            Board.DrawBoard();
+            Console.WriteLine($"{Player.UserChar} WON!");
+            GameOver = true;
+        }
+        if (Board.one == Board.five && Board.five == Board.nine && Board.five != ' ')
+        {
+            Console.Clear();
+            Board.DrawBoard();
+            Console.WriteLine($"{Player.UserChar} WON!");
+            GameOver = true;
+        }
+        if (Board.three == Board.five && Board.five == Board.seven && Board.three != ' ')
+        {
+            Console.Clear();
+            Board.DrawBoard();
+            Console.WriteLine($"{Player.UserChar} WON!");
+            GameOver = true;
+        }
+        if (Board.two == Board.five && Board.eight == Board.five && Board.five != ' ')
+        {
+            Console.Clear();
+            Board.DrawBoard();
+            Console.WriteLine($"{Player.UserChar} WON!");
+            GameOver = true;
+        }
+        if (Board.four == Board.five && Board.five == Board.six && Board.six != ' ')
+        {
+            Console.Clear();
+            Board.DrawBoard();
+            Console.WriteLine($"{Player.UserChar} WON!");
+            GameOver = true;
+        }
+
+        //Cat Draw
+        if (Board.one != ' ' && Board.two != ' ' && Board.three != ' ' && Board.four != ' ' && Board.five != ' ' && Board.six != ' ' && Board.seven != ' ' && Board.eight != ' ' && Board.nine != ' ') 
+        {
+            Console.Clear();
+            Board.DrawBoard();
+            Console.WriteLine($"ITS A CAT!!!");
+            GameOver = true;
+        }
+
+    }
+
+
+
+  
+
+
+}
+
+
+
+
+public class Board
+{ 
+
+    public char one;
+    public char two;
+    public char three;
+    public char four;
+    public char five;
+    public char six;
+    public char seven;
+    public char eight;
+    public char nine;
+    public Board()
+    {
+        one = ' ';
+        two = ' ';
+        three = ' ';
+        four = ' ';
+        five = ' ';
+        six = ' ';
+        seven = ' ';
+        eight = ' ';
+        nine = ' ';
+    }
+    public void DrawBoard()
+    {
+        
+        Console.WriteLine($" {one} | {two} | {three} " + "\n---+---+---" + $"\n {four} | {five} | {six}" + "\n---+---+---" + $"" + $"\n {seven} | {eight} | {nine}");
+    }
+    
+}
